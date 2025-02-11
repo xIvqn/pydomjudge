@@ -4,7 +4,7 @@ from pydomjudge.clients.client import _Client
 from pydomjudge.models.main import JudgementType
 
 
-class JudgeTypes(_Client):
+class JudgeTypesClient(_Client):
     def get_all_judgement_types(self, contest_id: Union[str, int], idlist: List[str] = None,
                                 strict: bool = False) -> List[JudgementType]:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/judgement-types"
