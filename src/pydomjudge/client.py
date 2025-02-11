@@ -4,7 +4,8 @@ import requests
 from requests.auth import HTTPDigestAuth
 
 from pydomjudge.models.main import Contest, Clarification, Submission, User, Award, Balloon, ContestState, \
-    ContestStatus, Event, ContestProblem, JudgementType, Language, TeamAffiliation, Judging, Judgehost, TeamCategory
+    ContestStatus, Event, ContestProblem, JudgementType, Language, TeamAffiliation, Judging, Judgehost, TeamCategory, \
+    JudgingRun
 from pydomjudge.models.request import ClarificationPost
 from pydomjudge.models.response import Scoreboard, AccessInformation
 from pydomjudge.models.shared import ArchiveFile, SourceCode
@@ -659,6 +660,30 @@ class DOMJudge:
             "affiliation": affiliation,
             "public": public,
             "sortorder": sortorder
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    # Run section
+    def get_all_runs(self, contest_id: Union[str, int], idlist: List[str] = None, first_id: str = None, last_id: str = None, judging_id: str = None, limit: int = None, strict: bool = False) -> List[JudgingRun]:
+        url = f"{self.base_url}/api/v4/contests/{contest_id}/runs"
+        params = {
+            "ids[]": idlist,
+            "first_id": first_id,
+            "last_id": last_id,
+            "judging_id": judging_id,
+            "limit": limit,
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def get_run(self, contest_id: Union[str, int], run_id: str, strict: bool = False) -> JudgingRun:
+        url = f"{self.base_url}/api/v4/contests/{contest_id}/runs/{run_id}"
+        params = {
+            "strict": strict
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
