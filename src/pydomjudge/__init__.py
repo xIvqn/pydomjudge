@@ -1,0 +1,1 @@
+from pydomjudge.client import DOMJudgeAPI
