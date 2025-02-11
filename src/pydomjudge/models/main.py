@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List, Optional
+from typing import List, Optional, Dict
 from pydantic import BaseModel, Field
 
 from pydomjudge.models.shared import StatementFile, ImageFile, ArchiveFile
@@ -57,6 +57,18 @@ class Contest(BaseModel):
     start_time: datetime
     end_time: datetime
     banner: List[ImageFile] = Field(default_factory=list)  # From "Banner" schema
+
+class ContestStatus:
+    num_submissions: int
+    num_queued: int
+    num_judging: int
+
+class Event:
+    id: str
+    type: str
+    op: str
+    data: Dict
+    time: str
 
 class Team(BaseModel):
     id: str
