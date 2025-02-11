@@ -4,7 +4,7 @@ import requests
 from requests.auth import HTTPDigestAuth
 
 from pydomjudge.models.main import Contest, Clarification, Submission, User, Award, Balloon, ContestState, \
-    ContestStatus, Event, ContestProblem, JudgementType, Language
+    ContestStatus, Event, ContestProblem, JudgementType, Language, TeamAffiliation, Judging, Judgehost, TeamCategory
 from pydomjudge.models.request import ClarificationPost
 from pydomjudge.models.response import Scoreboard, AccessInformation
 from pydomjudge.models.shared import ArchiveFile, SourceCode
