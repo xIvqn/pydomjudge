@@ -30,6 +30,26 @@ class ContestProblem(BaseModel):
     time_limit: float
     statement: List[StatementFile] = Field(default_factory=list)
 
+class Balloon:
+    balloonid: int
+    time: str
+    problem: str
+    contestproblem: ContestProblem
+    team: str
+    teamid: int
+    location: Optional[str]
+    affiliation: Optional[str]
+    affiliationid: Optional[int]
+    category: str
+    total: List[ContestProblem]
+    awards: str
+    done: bool
+
+class Award:
+    id: str
+    citation: str
+    team_ids: List[str]
+
 class Contest(BaseModel):
     id: str
     name: str
