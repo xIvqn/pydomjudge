@@ -106,6 +106,17 @@ class Judgehost:
     polltime: str
     hidden: bool
 
+class Language:
+    id: str
+    name: str
+    extensions: List[str]
+    compile_executable_hash: Optional[str]
+    filter_compiler_files: bool
+    allow_judge: bool
+    time_factor: float
+    entry_point_required: bool
+    entry_point_name: Optional[str]
+
 class Judgement(BaseModel):
     id: str
     submission_id: str

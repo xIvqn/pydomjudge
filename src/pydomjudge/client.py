@@ -4,7 +4,7 @@ import requests
 from requests.auth import HTTPDigestAuth
 
 from pydomjudge.models.main import Contest, Clarification, Submission, User, Award, Balloon, ContestState, \
-    ContestStatus, Event, ContestProblem
+    ContestStatus, Event, ContestProblem, JudgementType, Language
 from pydomjudge.models.request import ClarificationPost
 from pydomjudge.models.response import Scoreboard, AccessInformation
 from pydomjudge.models.shared import ArchiveFile, SourceCode
@@ -494,7 +494,7 @@ class DOMJudge:
         params = {
             "strict": strict
         }
-        response = self.session.get(url, params=params) 
+        response = self.session.get(url, params=params)
         response.raise_for_status()
         return response.content
 
@@ -504,6 +504,72 @@ class DOMJudge:
             "strict": strict
         }
         response = self.session.post(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    # Judgements section
+    def get_all_judgements(self, contest_id: Union[str, int], idlist: List[str] = None, result: str = None,
+                           submission_id: str = None, strict: bool = False) -> List[Judging]:
+        url = f"{self.base_url}/api/v4/contests/{contest_id}/judgements"
+        params = {
+            "ids[]": idlist,
+            "result": result,
+            "submission_id": submission_id,
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def get_judgement(self, contest_id: Union[str, int], judgement_id: str, strict: bool = False) -> Judging:
+        url = f"{self.base_url}/api/v4/contests/{contest_id}/judgements/{judgement_id}"
+        params = {
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    # Judgement types section
+    def get_all_judgement_types(self, contest_id: Union[str, int], idlist: List[str] = None,
+                                strict: bool = False) -> List[JudgementType]:
+        url = f"{self.base_url}/api/v4/contests/{contest_id}/judgement-types"
+        params = {
+            "ids[]": idlist,
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def get_judgement_type(self, contest_id: Union[str, int], judgement_type_id: str,
+                           strict: bool = False) -> JudgementType:
+        url = f"{self.base_url}/api/v4/contests/{contest_id}/judgement-types/{judgement_type_id}"
+        params = {
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    # Languages section
+    def get_all_languages(self, contest_id: Union[str, int], idlist: List[str] = None, strict: bool = False) -> \
+    List[Language]:
+        url = f"{self.base_url}/api/v4/contests/{contest_id}/languages"
+        params = {
+            "ids[]": idlist,
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def get_language(self, contest_id: Union[str, int], language_id: str, strict: bool = False) -> Language:
+        url = f"{self.base_url}/api/v4/contests/{contest_id}/languages/{language_id}"
+        params = {
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
         response.raise_for_status()
         return response.json()
 
