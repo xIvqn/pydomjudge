@@ -2,6 +2,7 @@ from typing import Union, List
 
 from pydomjudge.clients.client import _Client
 from pydomjudge.models.main import Submission
+from pydomjudge.models.shared import ArchiveFile, SourceCode
 
 
 class SubmissionsClient(_Client):
