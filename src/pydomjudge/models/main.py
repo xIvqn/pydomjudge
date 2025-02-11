@@ -148,3 +148,11 @@ class Clarification(BaseModel):
     from_team_id: Optional[str] = None
     to_team_id: Optional[str] = None
     time: Optional[datetime] = None
+
+class JudgingRun:
+    id: str
+    judgement_id: str
+    run_time: float
+    time: str
+    contest_time: str
+    ordinal: int
