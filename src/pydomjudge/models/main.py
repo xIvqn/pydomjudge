@@ -133,6 +133,14 @@ class Judgement(BaseModel):
     valid: bool
     max_run_time: Optional[float] = None
 
+class TeamAffiliation:
+    id: str
+    shortname: str
+    icpc_id: Optional[str]
+    name: str
+    formal_name: str
+    country: Optional[str]
+
 class Clarification(BaseModel):
     id: str
     text: str
