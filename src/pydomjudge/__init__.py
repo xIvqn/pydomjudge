@@ -1,1 +1,1 @@
-from pydomjudge.client import DOMJudge
+from pydomjudge.domjudge import DOMJudge

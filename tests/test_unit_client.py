@@ -1,7 +1,7 @@
 import pytest
 import responses
-from pydomjudge.client import DOMJudge
-from pydomjudge.models.main import Contest, User
+from pydomjudge.domjudge import DOMJudge
+from pydomjudge.models.main import Contest
 
 
 @pytest.fixture

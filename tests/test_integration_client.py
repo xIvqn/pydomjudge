@@ -1,7 +1,7 @@
 import pytest
 import os
 from dotenv import load_dotenv
-from pydomjudge import DOMJudge
+from pydomjudge.domjudge import DOMJudge
 
 # Cargar variables de entorno para el servidor de prueba
 load_dotenv()
