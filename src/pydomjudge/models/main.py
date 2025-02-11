@@ -117,6 +117,15 @@ class Language:
     entry_point_required: bool
     entry_point_name: Optional[str]
 
+class Judging:
+    id: str
+    submission_id: str
+    start_time: str
+    start_contest_time: str
+    end_time: str
+    end_contest_time: str
+    valid: bool
+
 class Judgement(BaseModel):
     id: str
     submission_id: str
