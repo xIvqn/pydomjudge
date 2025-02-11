@@ -689,6 +689,7 @@ class DOMJudge:
         response.raise_for_status()
         return response.json()
 
+    # Submission section
     def get_submissions(self, contest_id: Union[str, int], idlist: List[Union[str, int]] = None, language_id: str = None,
                         strict: bool = False) -> List[Submission]:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/submissions"
@@ -725,5 +726,23 @@ class DOMJudge:
             "strict": strict
         }
         response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def add_submission(self, contest_id: Union[str, int], submission_data: dict, strict: bool = False) -> str:
+        url = f"{self.base_url}/api/v4/contests/{contest_id}/submissions"
+        params = {
+            "strict": strict
+        }
+        response = self.session.post(url, params=params, files=submission_data)
+        response.raise_for_status()
+        return response.json()
+
+    def update_submission(self, contest_id: Union[str, int], submission_id: str, submission_data: dict, strict: bool = False) -> str:
+        url = f"{self.base_url}/api/v4/contests/{contest_id}/submissions/{submission_id}"
+        params = {
+            "strict": strict
+        }
+        response = self.session.put(url, params=params, json=submission_data)
         response.raise_for_status()
         return response.json()
