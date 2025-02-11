@@ -85,11 +85,26 @@ class Submission(BaseModel):
     time: datetime
     files: List[ArchiveFile] = Field(default_factory=list)  # From "Files" schema
 
+class TeamCategory:
+    id: str
+    name: str
+    hidden: bool
+    icpc_id: str
+    sortorder: int
+    color: str
+
 class JudgementType(BaseModel):
     id: str
     name: str
     penalty: bool
     solved: bool
+
+class Judgehost:
+    id: str
+    hostname: str
+    enabled: bool
+    polltime: str
+    hidden: bool
 
 class Judgement(BaseModel):
     id: str
