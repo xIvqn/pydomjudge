@@ -46,6 +46,6 @@ def test_get_contests_error(api_client):
     )
 
     with pytest.raises(Exception) as exc_info:
-        api_client.get_contests()
+        api_client.get_all_contests()
 
     assert "401 Client Error" in str(exc_info.value)
