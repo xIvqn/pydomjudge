@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import List, Union, Dict
 
 import requests
 from requests.auth import HTTPDigestAuth
@@ -238,13 +238,98 @@ class DOMJudge:
         response.raise_for_status()
         return response.content
 
-    def submit_clarification(self, cid: Union[str, int], data: ClarificationPost) -> Clarification:
-        response = self.session.post(
-            f"{self.base_url}/api/v4/contests/{cid}/clarifications",
-            json=data.dict()
-        )
+    # Executables section
+    def get_executable(self, executable_id: str, strict: bool = False) -> Dict:
+        url = f"{self.base_url}/api/v4/executables/{executable_id}"
+        params = {
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
         response.raise_for_status()
-        return Clarification(**response.json())
+        return response.json()
+
+    # General section
+    def get_api_version(self, strict: bool = False) -> Dict:
+        url = f"{self.base_url}/api/v4/version"
+        params = {
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def get_api_info(self, strict: bool = False) -> Dict:
+        url = f"{self.base_url}/api/v4/info"
+        params = {
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def get_api_root(self, strict: bool = False) -> Dict:
+        url = f"{self.base_url}/api/v4/"
+        params = {
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def get_general_status(self, strict: bool = False) -> List[Dict]:
+        url = f"{self.base_url}/api/v4/status"
+        params = {
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def get_user_info(self, strict: bool = False) -> User:
+        url = f"{self.base_url}/api/v4/user"
+        params = {
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def get_config(self, name: str = None, strict: bool = False) -> Dict:
+        url = f"{self.base_url}/api/v4/config"
+        params = {
+            "name": name,
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def update_config(self, config_data: Dict, strict: bool = False) -> Dict:
+        url = f"{self.base_url}/api/v4/config"
+        params = {
+            "strict": strict
+        }
+        response = self.session.put(url, params=params, json=config_data)
+        response.raise_for_status()
+        return response.json()
+
+    def check_config(self, strict: bool = False) -> Dict:
+        url = f"{self.base_url}/api/v4/config/check"
+        params = {
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def get_country_flag(self, country_code: str, size: str, strict: bool = False) -> bytes:
+        url = f"{self.base_url}/api/v4/country-flags/{country_code}/{size}"
+        params = {
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.content
 
     def get_scoreboard(self, contest_id: Union[str, int], allteams: bool = None, category: Union[str, int] = None,
                        country: str = None, affiliation: Union[str, int] = None, public: bool = None,
