@@ -573,6 +573,16 @@ class DOMJudge:
         response.raise_for_status()
         return response.json()
 
+    # Metrics section
+    def get_metrics(self, strict: bool = False) -> str:
+        url = f"{self.base_url}/api/v4/metrics/prometheus"
+        params = {
+            "strict": strict
+        }
+        response = self.session.get(url, params=params)
+        response.raise_for_status()
+        return response.text
+
     # Scoreboard section
     def get_scoreboard(self, contest_id: Union[str, int], allteams: bool = None, category: Union[str, int] = None,
                        country: str = None, affiliation: Union[str, int] = None, public: bool = None,
