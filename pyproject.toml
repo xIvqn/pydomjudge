@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pydomjudge"
-version = "0.0.1-beta1"
+version = "0.0.1-beta2"
 authors = [
   { name="xIvqn", email="xivqn@proton.me" },
 ]
