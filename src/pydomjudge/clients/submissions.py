@@ -17,7 +17,7 @@ class SubmissionsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [Submission.model_validate(submission) for submission in response.json()]
 
     def get_submission(self, contest_id: Union[str, int], submission_id: Union[str, int], strict: bool = False) -> Submission:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/submissions/{submission_id}"
@@ -26,7 +26,7 @@ class SubmissionsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return Submission.model_validate(response.json())
 
     def get_submission_files(self, contest_id: Union[str, int], submission_id: Union[str, int], strict: bool = False) -> List[ArchiveFile]:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/submissions/{submission_id}/files"
@@ -44,7 +44,7 @@ class SubmissionsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [SourceCode.model_validate(source_code) for source_code in response.json()]
 
     def add_submission(self, contest_id: Union[str, int], submission_data: dict, strict: bool = False) -> str:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/submissions"

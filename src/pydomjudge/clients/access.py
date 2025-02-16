@@ -12,4 +12,4 @@ class AccessClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return AccessInformation.model_validate(response.json())

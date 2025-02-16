@@ -13,7 +13,7 @@ class JudgehostsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [Judgehost.model_validate(judgehost) for judgehost in response.json()]
 
     def add_judgehost(self, strict: bool = False) -> List[Judging]:
         url = f"{self.base_url}/api/v4/judgehosts"
@@ -31,7 +31,7 @@ class JudgehostsClient(_Client):
         }
         response = self.session.put(url, params=params, json=judgehost_data)
         response.raise_for_status()
-        return response.json()
+        return [Judgehost.model_validate(judgehost) for judgehost in response.json()]
 
     def update_judging(self, hostname: str, judgetask_id: int, judging_data: dict, strict: bool = False) -> None:
         url = f"{self.base_url}/api/v4/judgehosts/update-judging/{hostname}/{judgetask_id}"

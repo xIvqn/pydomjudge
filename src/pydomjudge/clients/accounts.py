@@ -15,7 +15,7 @@ class AccountsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [User.model_validate(account) for account in response.json()]
 
     def get_account(self, contest_id: Union[str, int], account_id: str, strict: bool = False) -> User:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/accounts/{account_id}"
@@ -24,7 +24,7 @@ class AccountsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return User.model_validate(response.json())
 
     def get_current_account(self, contest_id: Union[str, int], strict: bool = False) -> User:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/account"
@@ -33,4 +33,4 @@ class AccountsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return User.model_validate(response.json())

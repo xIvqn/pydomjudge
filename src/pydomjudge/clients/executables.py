@@ -11,4 +11,4 @@ class ExecutablesClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return self.model_validate(response.json())

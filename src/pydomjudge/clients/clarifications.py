@@ -15,7 +15,7 @@ class ClarificationsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [Clarification.model_validate(clarification) for clarification in response.json()]
 
     def get_clarification(self, contest_id: Union[str, int], clarification_id: Union[str, int], strict: bool = False) -> Clarification:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/clarifications/{clarification_id}"
@@ -24,10 +24,10 @@ class ClarificationsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return Clarification.model_validate(response.json())
 
     def add_clarification(self, contest_id: Union[str, int], clarification: ClarificationPost) -> Clarification:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/clarifications"
         response = self.session.post(url, json=clarification)
         response.raise_for_status()
-        return response.json()
+        return Clarification.model_validate(response.json())

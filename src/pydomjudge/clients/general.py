@@ -48,7 +48,7 @@ class GeneralClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return User.model_validate(response.json())
 
     def get_config(self, name: str = None, strict: bool = False) -> Dict:
         url = f"{self.base_url}/api/v4/config"

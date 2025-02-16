@@ -15,7 +15,7 @@ class OrganizationsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [TeamAffiliation.model_validate(org) for org in response.json()]
 
     def add_organization(self, contest_id: Union[str, int], organization_data: dict,
                          strict: bool = False) -> TeamAffiliation:
@@ -25,7 +25,7 @@ class OrganizationsClient(_Client):
         }
         response = self.session.post(url, params=params, json=organization_data)
         response.raise_for_status()
-        return response.json()
+        return TeamAffiliation.model_validate(response.json())
 
     def get_organization(self, contest_id: Union[str, int], organization_id: str,
                          strict: bool = False) -> TeamAffiliation:
@@ -35,7 +35,7 @@ class OrganizationsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return TeamAffiliation.model_validate(response.json())
 
     def get_organization_logo(self, contest_id: Union[str, int], organization_id: str,
                               strict: bool = False) -> bytes:

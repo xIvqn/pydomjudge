@@ -16,7 +16,7 @@ class JudgementsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [Judging.model_validate(judgement) for judgement in response.json()]
 
     def get_judgement(self, contest_id: Union[str, int], judgement_id: str, strict: bool = False) -> Judging:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/judgements/{judgement_id}"
@@ -25,4 +25,4 @@ class JudgementsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return Judging.model_validate(response.json())

@@ -13,7 +13,7 @@ class ProblemsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [ContestProblem.model_validate(problem) for problem in response.json()]
 
     def get_problem(self, contest_id: Union[str, int], problem_id: str, strict: bool = False) -> ContestProblem:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/problems/{problem_id}"
@@ -22,7 +22,7 @@ class ProblemsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return ContestProblem.model_validate(response.json())
 
     def add_problem(self, contest_id: Union[str, int], problem_data: dict, strict: bool = False) -> str:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/problems"
@@ -40,7 +40,7 @@ class ProblemsClient(_Client):
         }
         response = self.session.put(url, params=params, json=problem_data)
         response.raise_for_status()
-        return response.json()
+        return ContestProblem.model_validate(response.json())
 
     def unlink_problem(self, contest_id: Union[str, int], problem_id: str, strict: bool = False) -> None:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/problems/{problem_id}"

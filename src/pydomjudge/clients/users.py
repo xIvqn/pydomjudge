@@ -13,25 +13,25 @@ class UsersClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [User.model_validate(user) for user in response.json()]
 
     def get_user(self, user_id: str) -> User:
         url = f"{self.base_url}/api/v4/users/{user_id}"
         response = self.session.get(url)
         response.raise_for_status()
-        return response.json()
+        return User.model_validate(response.json())
 
     def add_user(self, user_data: dict) -> User:
         url = f"{self.base_url}/api/v4/users"
         response = self.session.post(url, json=user_data)
         response.raise_for_status()
-        return response.json()
+        return User.model_validate(response.json())
 
     def update_user(self, user_id: str, user_data: dict) -> User:
         url = f"{self.base_url}/api/v4/users/{user_id}"
         response = self.session.put(url, json=user_data)
         response.raise_for_status()
-        return response.json()
+        return User.model_validate(response.json())
 
     def delete_user(self, user_id: str) -> None:
         url = f"{self.base_url}/api/v4/users/{user_id}"

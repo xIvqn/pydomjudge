@@ -14,7 +14,7 @@ class JudgeTypesClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [JudgementType.model_validate(judgement_type) for judgement_type in response.json()]
 
     def get_judgement_type(self, contest_id: Union[str, int], judgement_type_id: str,
                            strict: bool = False) -> JudgementType:
@@ -24,4 +24,4 @@ class JudgeTypesClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return JudgementType.model_validate(response.json())

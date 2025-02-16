@@ -12,7 +12,7 @@ class AwardsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [Award.model_validate(award) for award in response.json()]
 
     def get_award(self, contest_id: Union[str, int], award_id: str, strict: bool = False) -> Award:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/awards/{award_id}"
@@ -21,4 +21,4 @@ class AwardsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return Award.model_validate(response.json())

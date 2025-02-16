@@ -15,7 +15,7 @@ class GroupsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [TeamCategory.model_validate(group) for group in response.json()]
 
     def add_group(self, contest_id: Union[str, int], group_data: dict, strict: bool = False) -> TeamCategory:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/groups"
@@ -24,7 +24,7 @@ class GroupsClient(_Client):
         }
         response = self.session.post(url, params=params, json=group_data)
         response.raise_for_status()
-        return response.json()
+        return TeamCategory.model_validate(response.json())
 
     def get_group(self, contest_id: Union[str, int], group_id: str, strict: bool = False) -> TeamCategory:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/groups/{group_id}"
@@ -33,4 +33,4 @@ class GroupsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return TeamCategory.model_validate(response.json())

@@ -14,7 +14,7 @@ class ContestsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [Contest.model_validate(contest) for contest in response.json()]
 
     def get_contest(self, contest_id: Union[str, int], strict: bool = False) -> Contest:
         url = f"{self.base_url}/api/v4/contests/{contest_id}"
@@ -23,7 +23,7 @@ class ContestsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return Contest.model_validate(response.json())
 
     def add_contest(self, contest_data: dict, strict: bool = False) -> str:
         url = f"{self.base_url}/api/v4/contests"
@@ -91,7 +91,7 @@ class ContestsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return ContestState.model_validate(response.json())
 
     def get_event_feed(self, contest_id: Union[str, int], since_id: str = None, types: List[str] = None,
                        stream: bool = True, strict: bool = False) -> List[Event]:
@@ -104,7 +104,7 @@ class ContestsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [Event.model_validate(event) for event in response.json()]
 
     def get_contest_status(self, contest_id: Union[str, int], strict: bool = False) -> ContestStatus:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/status"
@@ -113,7 +113,7 @@ class ContestsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return ContestStatus.model_validate(response.json())
 
     def get_samples_zip(self, contest_id: Union[str, int], strict: bool = False) -> bytes:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/samples.zip"

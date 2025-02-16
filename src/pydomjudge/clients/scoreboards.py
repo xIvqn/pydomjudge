@@ -19,4 +19,4 @@ class ScoreboardsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return Scoreboard.model_validate(response.json())

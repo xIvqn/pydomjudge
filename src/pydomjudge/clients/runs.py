@@ -17,7 +17,7 @@ class RunsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return [JudgingRun.model_validate(run) for run in response.json()]
 
     def get_run(self, contest_id: Union[str, int], run_id: str, strict: bool = False) -> JudgingRun:
         url = f"{self.base_url}/api/v4/contests/{contest_id}/runs/{run_id}"
@@ -26,4 +26,4 @@ class RunsClient(_Client):
         }
         response = self.session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return JudgingRun.model_validate(response.json())
