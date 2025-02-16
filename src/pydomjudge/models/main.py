@@ -30,7 +30,7 @@ class ContestProblem(BaseModel):
     time_limit: float
     statement: List[StatementFile] = Field(default_factory=list)
 
-class Balloon:
+class Balloon(BaseModel):
     balloonid: int
     time: str
     problem: str
@@ -45,7 +45,7 @@ class Balloon:
     awards: str
     done: bool
 
-class Award:
+class Award(BaseModel):
     id: str
     citation: str
     team_ids: List[str]
@@ -58,12 +58,12 @@ class Contest(BaseModel):
     end_time: datetime
     banner: List[ImageFile] = Field(default_factory=list)  # From "Banner" schema
 
-class ContestStatus:
+class ContestStatus(BaseModel):
     num_submissions: int
     num_queued: int
     num_judging: int
 
-class Event:
+class Event(BaseModel):
     id: str
     type: str
     op: str
@@ -85,7 +85,7 @@ class Submission(BaseModel):
     time: datetime
     files: List[ArchiveFile] = Field(default_factory=list)  # From "Files" schema
 
-class TeamCategory:
+class TeamCategory(BaseModel):
     id: str
     name: str
     hidden: bool
@@ -99,14 +99,14 @@ class JudgementType(BaseModel):
     penalty: bool
     solved: bool
 
-class Judgehost:
+class Judgehost(BaseModel):
     id: str
     hostname: str
     enabled: bool
     polltime: str
     hidden: bool
 
-class Language:
+class Language(BaseModel):
     id: str
     name: str
     extensions: List[str]
@@ -117,7 +117,7 @@ class Language:
     entry_point_required: bool
     entry_point_name: Optional[str]
 
-class Judging:
+class Judging(BaseModel):
     id: str
     submission_id: str
     start_time: str
@@ -133,7 +133,7 @@ class Judgement(BaseModel):
     valid: bool
     max_run_time: Optional[float] = None
 
-class TeamAffiliation:
+class TeamAffiliation(BaseModel):
     id: str
     shortname: str
     icpc_id: Optional[str]
@@ -149,7 +149,7 @@ class Clarification(BaseModel):
     to_team_id: Optional[str] = None
     time: Optional[datetime] = None
 
-class JudgingRun:
+class JudgingRun(BaseModel):
     id: str
     judgement_id: str
     run_time: float
