@@ -28,7 +28,7 @@ def test_get_contests_success(api_client):
     )
 
     # Test
-    result = api_client.get_contests()
+    result = api_client.get_all_contests()
 
     # Assertions
     assert len(result) == 1
