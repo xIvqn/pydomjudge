@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pydomjudge"
-version = "0.0.1-beta2"
+version = "0.1.0.post1"
 authors = [
   { name="xIvqn", email="xivqn@proton.me" },
 ]
@@ -14,6 +14,12 @@ requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
+]
+license = { file = "LICENSE" }
+dependencies = [
+    "pydantic~=2.10.6",
+    "setuptools~=75.8.0",
+    "requests~=2.32.3"
 ]
 
 [project.urls]
