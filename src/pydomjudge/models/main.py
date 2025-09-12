@@ -6,6 +6,9 @@ from pydomjudge.models.shared import StatementFile, ImageFile, ArchiveFile
 
 
 class User(BaseModel):
+    """
+    Represents a user in the system, including identity, team, roles, and status.
+    """
     id: str
     username: str
     name: str
@@ -16,6 +19,9 @@ class User(BaseModel):
     last_login_time: Optional[datetime] = None
 
 class ContestState(BaseModel):
+    """
+    Tracks the timing and state changes of a contest.
+    """
     started: Optional[datetime] = None
     ended: Optional[datetime] = None
     frozen: Optional[datetime] = None
@@ -24,6 +30,9 @@ class ContestState(BaseModel):
     end_of_updates: Optional[datetime] = None
 
 class ContestProblem(BaseModel):
+    """
+    Describes a contest problem, including its label, name, time limit, and statements.
+    """
     id: str
     label: str
     name: str
@@ -31,6 +40,9 @@ class ContestProblem(BaseModel):
     statement: List[StatementFile] = Field(default_factory=list)
 
 class Balloon(BaseModel):
+    """
+    Represents a balloon awarded to a team for solving a problem in a contest.
+    """
     balloonid: int
     time: str
     problem: str
@@ -46,11 +58,17 @@ class Balloon(BaseModel):
     done: bool
 
 class Award(BaseModel):
+    """
+    Represents an award and its recipients in a contest.
+    """
     id: str
     citation: str
     team_ids: List[str]
 
 class Contest(BaseModel):
+    """
+    Contains contest metadata, timing, and banner images.
+    """
     id: str
     name: str
     shortname: str
@@ -59,11 +77,17 @@ class Contest(BaseModel):
     banner: List[ImageFile] = Field(default_factory=list)  # From "Banner" schema
 
 class ContestStatus(BaseModel):
+    """
+    Tracks the number of submissions, queued, and judging in a contest.
+    """
     num_submissions: int
     num_queued: int
     num_judging: int
 
 class Event(BaseModel):
+    """
+    Represents a system event, including type, operation, and data.
+    """
     id: str
     type: str
     op: str
@@ -71,6 +95,9 @@ class Event(BaseModel):
     time: str
 
 class Team(BaseModel):
+    """
+    Represents a team, including its name, display name, groups, and photos.
+    """
     id: str
     name: str
     display_name: Optional[str] = None
@@ -78,6 +105,9 @@ class Team(BaseModel):
     photo: List[ImageFile] = Field(default_factory=list)  # From "Photo" schema
 
 class Submission(BaseModel):
+    """
+    Represents a team's submission, including files and metadata.
+    """
     id: str
     language_id: str
     problem_id: str
@@ -86,6 +116,9 @@ class Submission(BaseModel):
     files: List[ArchiveFile] = Field(default_factory=list)  # From "Files" schema
 
 class TeamCategory(BaseModel):
+    """
+    Represents a team category, including ICPC info and color.
+    """
     id: str
     name: str
     hidden: bool
@@ -94,12 +127,18 @@ class TeamCategory(BaseModel):
     color: str
 
 class JudgementType(BaseModel):
+    """
+    Represents a judgement type, including penalty and solved status.
+    """
     id: str
     name: str
     penalty: bool
     solved: bool
 
 class Judgehost(BaseModel):
+    """
+    Represents a judgehost, including hostname and status.
+    """
     id: str
     hostname: str
     enabled: bool
@@ -107,6 +146,9 @@ class Judgehost(BaseModel):
     hidden: bool
 
 class Language(BaseModel):
+    """
+    Represents a programming language and its configuration for judging.
+    """
     id: str
     name: str
     extensions: List[str]
@@ -118,6 +160,9 @@ class Language(BaseModel):
     entry_point_name: Optional[str]
 
 class Judging(BaseModel):
+    """
+    Represents a judging process for a submission.
+    """
     id: str
     submission_id: str
     start_time: str
@@ -127,6 +172,9 @@ class Judging(BaseModel):
     valid: bool
 
 class Judgement(BaseModel):
+    """
+    Represents a judgement for a submission, including type and validity.
+    """
     id: str
     submission_id: str
     judgement_type_id: Optional[str] = None
@@ -134,6 +182,9 @@ class Judgement(BaseModel):
     max_run_time: Optional[float] = None
 
 class TeamAffiliation(BaseModel):
+    """
+    Represents a team's affiliation, including ICPC and country info.
+    """
     id: str
     shortname: str
     icpc_id: Optional[str]
@@ -142,6 +193,9 @@ class TeamAffiliation(BaseModel):
     country: Optional[str]
 
 class Clarification(BaseModel):
+    """
+    Represents a clarification request or response in a contest.
+    """
     id: str
     text: str
     problem_id: Optional[str] = None
@@ -150,6 +204,9 @@ class Clarification(BaseModel):
     time: Optional[datetime] = None
 
 class JudgingRun(BaseModel):
+    """
+    Represents a single run in a judging process for a submission.
+    """
     id: str
     judgement_id: str
     run_time: float

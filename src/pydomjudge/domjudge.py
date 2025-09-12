@@ -25,4 +25,11 @@ class DOMJudge(AccessClient, AccountsClient, AwardsClient, BalloonsClient, Clari
                ExecutablesClient, GeneralClient, GroupsClient, JudgehostsClient, JudgementsClient, JudgeTypesClient,
                LanguagesClient, MetricsClient, OrganizationsClient, ProblemsClient, RunsClient, ScoreboardsClient,
                SubmissionsClient, TeamsClient, UsersClient):
+    """
+    DOMJudge client class that aggregates multiple API client interfaces for interacting with the DOMJudge system.
+
+    This class inherits from various client classes, each providing access to a specific set of DOMJudge functionalities. Use this class to perform comprehensive operations on a DOMJudge instance via its API.
+    
+    Documentation for each method can be found in the respective client classes.
+    """
     pass
