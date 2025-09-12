@@ -3,7 +3,7 @@ name: Build and Deploy Docs
 on:
   push:
     branches:
-      - dev   # Change to 'main' for production
+      - main
   workflow_dispatch:
 
 jobs:
