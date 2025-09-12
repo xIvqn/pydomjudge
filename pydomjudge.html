@@ -303,7 +303,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domjudge-module">domjudge module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pydomjudge.domjudge">domjudge module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pydomjudge.domjudge.DOMJudge"><code class="docutils literal notranslate"><span class="pre">DOMJudge</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
 </ul>
             </nav>
@@ -318,42 +321,51 @@ document.write(`
                   
   <section id="pydomjudge-package">
 <h1>pydomjudge package<a class="headerlink" href="#pydomjudge-package" title="Link to this heading">#</a></h1>
-<section id="domjudge-module">
-<h2>domjudge module<a class="headerlink" href="#domjudge-module" title="Link to this heading">#</a></h2>
+<section id="module-pydomjudge.domjudge">
+<span id="domjudge-module"></span><h2>domjudge module<a class="headerlink" href="#module-pydomjudge.domjudge" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pydomjudge.domjudge.DOMJudge">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydomjudge.domjudge.</span></span><span class="sig-name descname"><span class="pre">DOMJudge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydomjudge.domjudge.DOMJudge" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.access.AccessClient" title="pydomjudge.clients.access.AccessClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">AccessClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.accounts.AccountsClient" title="pydomjudge.clients.accounts.AccountsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">AccountsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.awards.AwardsClient" title="pydomjudge.clients.awards.AwardsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">AwardsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.balloons.BalloonsClient" title="pydomjudge.clients.balloons.BalloonsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalloonsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.clarifications.ClarificationsClient" title="pydomjudge.clients.clarifications.ClarificationsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClarificationsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.contests.ContestsClient" title="pydomjudge.clients.contests.ContestsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContestsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.executables.ExecutablesClient" title="pydomjudge.clients.executables.ExecutablesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutablesClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.general.GeneralClient" title="pydomjudge.clients.general.GeneralClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneralClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.groups.GroupsClient" title="pydomjudge.clients.groups.GroupsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">GroupsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.judgehosts.JudgehostsClient" title="pydomjudge.clients.judgehosts.JudgehostsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">JudgehostsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.judgements.JudgementsClient" title="pydomjudge.clients.judgements.JudgementsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">JudgementsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.judgetypes.JudgeTypesClient" title="pydomjudge.clients.judgetypes.JudgeTypesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">JudgeTypesClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.languages.LanguagesClient" title="pydomjudge.clients.languages.LanguagesClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">LanguagesClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.metrics.MetricsClient" title="pydomjudge.clients.metrics.MetricsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.organizations.OrganizationsClient" title="pydomjudge.clients.organizations.OrganizationsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">OrganizationsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.problems.ProblemsClient" title="pydomjudge.clients.problems.ProblemsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProblemsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.runs.RunsClient" title="pydomjudge.clients.runs.RunsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">RunsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.scoreboards.ScoreboardsClient" title="pydomjudge.clients.scoreboards.ScoreboardsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScoreboardsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.submissions.SubmissionsClient" title="pydomjudge.clients.submissions.SubmissionsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubmissionsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.teams.TeamsClient" title="pydomjudge.clients.teams.TeamsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">TeamsClient</span></code></a>, <a class="reference internal" href="pydomjudge.clients.html#pydomjudge.clients.users.UsersClient" title="pydomjudge.clients.users.UsersClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsersClient</span></code></a></p>
+<p>DOMJudge client class that aggregates multiple API client interfaces for interacting with the DOMJudge system.</p>
+<p>This class inherits from various client classes, each providing access to a specific set of DOMJudge functionalities. Use this class to perform comprehensive operations on a DOMJudge instance via its API.</p>
+<p>Documentation for each method can be found in the respective client classes.</p>
+</dd></dl>
+
 </section>
 <section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pydomjudge.clients.html">Clients</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#access-module">access module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#accounts-module">accounts module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#awards-module">awards module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#balloons-module">balloons module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#clarifications-module">clarifications module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#contests-module">contests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.access">access module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.accounts">accounts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.awards">awards module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.balloons">balloons module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.clarifications">clarifications module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.contests">contests module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.executables">executables module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#general-module">general module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#groups-module">groups module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#judgehosts-module">judgehosts module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#judgements-module">judgements module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#judgetypes-module">judgetypes module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#languages-module">languages module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.general">general module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.groups">groups module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.judgehosts">judgehosts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.judgements">judgements module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.judgetypes">judgetypes module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.languages">languages module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.metrics">metrics module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#organizations-module">organizations module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#problems-module">problems module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#runs-module">runs module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#scoreboards-module">scoreboards module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#submissions-module">submissions module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#teams-module">teams module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#users-module">users module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.organizations">organizations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.problems">problems module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.runs">runs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.scoreboards">scoreboards module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.submissions">submissions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.teams">teams module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.clients.html#module-pydomjudge.clients.users">users module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pydomjudge.models.html">Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.models.html#main-model">main model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.models.html#request-model">request model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.models.html#response-model">response model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pydomjudge.models.html#shared-model">shared model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.models.html#module-pydomjudge.models.main">main model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.models.html#module-pydomjudge.models.request">request model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.models.html#module-pydomjudge.models.response">response model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydomjudge.models.html#module-pydomjudge.models.shared">shared model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pydomjudge.models.html#module-pydomjudge.models">model contents</a></li>
 </ul>
 </li>
@@ -407,7 +419,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domjudge-module">domjudge module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pydomjudge.domjudge">domjudge module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pydomjudge.domjudge.DOMJudge"><code class="docutils literal notranslate"><span class="pre">DOMJudge</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
 </ul>
   </nav></div>
