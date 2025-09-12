@@ -21,11 +21,8 @@ jobs:
       - name: Install documentation dependencies
         run: pip install -r requirements-docs.txt
 
-      - name: Generate Sphinx documentation
-        run: sphinx-apidoc -o docs/ src/pydomjudge/
-
-      - name: Build Sphinx documentation
-        run: sphinx-build -b html docs/ docs/_build
+      - name: Generate and build Sphinx documentation
+        run: sphinx-apidoc -o docs/ src/pydomjudge/ && sphinx-build -b html docs/ docs/_build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
