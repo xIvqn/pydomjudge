@@ -9,7 +9,7 @@
 project = 'pydomjudge'
 copyright = '2025, xIvqn'
 author = 'xIvqn'
-release = 'v0.1.0.post1'
+release = '0.1.1'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
